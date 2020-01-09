@@ -1,0 +1,61 @@
+<div class="jumbotron jumbotron-fluid vertical-center" id="grad">
+	<div class="container text-center" >
+	<p><h1>Search for Gas Stations by city</h1></p>
+		<div class="row" id="padded">
+		<div class="col text-center">		
+	    	<select ng-options="value for value in values" ng-model="selectedValue">
+	    	</select>
+	    	<button type="button" class="btn  btn-lg btn-success " ng-click="getStationsByValue(selectedValue)">
+				Go
+			</button>
+		</div>
+	</div>
+</div>
+<div ng-hide="showsearch">
+	<div class="card" >
+		<div class="card-header">
+			<div class="row">
+			</div>
+			<div class="col-6">
+			</div>
+			<div class="row">
+				Filter by:		
+				<input type="text" ng-model="filtervalue">
+			</div>
+		</div>
+		<div class="card-body">
+			<table class="table table-sortable">
+				<thead class="text-primary">
+					<tr>
+						<td></td>
+						<td>Name</td>
+						<td>Address</td>
+						<td>Price</td>
+					</tr>
+				</thead>
+				<tbody>
+					
+						<button type="button" class="btn btn-success" ng-click="subscribeByEmail()">
+							<a href="#!subscribe" class="text-white">subscribe</a>
+						</button>
+						
+							<button type="button" class="btn btn-primary" ng-click="getStationsByAddress()">
+								<a href="#!station_tracker" class="text-white">Station Tracker</a>
+							</button>
+						
+					
+					<tr ng-repeat="station in stations | filter : filtervalue">
+						<td>
+							<input type="radio" name="optradio" ng-model="selectedStation" ng-click="selectStation(station)">
+						</td>
+						<td>{{station.name}}</td>
+						<td>{{station.address}}</td>
+						<td>${{station.price}}</td>		
+					</tr>
+				</tbody>		
+			</table>	
+		</div>
+	</div>
+</div>
+
+

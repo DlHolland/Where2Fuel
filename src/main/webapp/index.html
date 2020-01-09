@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+<script src="./js/Where2Fuel.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRSC2HkPKCYBZujwpy7QqMewZZst1c_RY"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.1/lodash.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./css/where2fuel.css"> 
+<script src="https://kit.fontawesome.com/047b4258d7.js" crossorigin="anonymous"></script>
+
+<title>Where2Fuel</title>
+</head>
+<body id="background" ng-app="where2fuel" ng-controller='where2fuelcontroller'>
+	<div class="container-fluid">
+		<div class="row" id="powder_blue">
+			<div class="col-4">
+				<img class="mx-auto d-block" src="./images/truckfinal.png" id="truck">
+		</div>
+			<div class="col-4 text-center">
+				<a class="nav-link" href="#!welcome"><h1 class="text-white">Where2Fuel</h1></a>
+			</div>
+			
+			<div class="col-4">
+				<img class="mx-auto d-block" src="./images/pump.jpeg" id="pump">
+			</div>
+		</div>
+	</div>
+	<nav class="navbar navbar-expand-sm bg-warning navbar-dark">
+		<div class="navbar-brand"><i class="fas fa-gas-pump"></i></div>
+		<ul class="navbar-nav">
+			<li class="navbar-item">
+				<a class="nav-link" href="#!search">search</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#!stacks">Stacks</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#!resume">Resume</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#!hobbies">Hobbies</a>
+			</li>
+		</ul>
+	</nav>
+		<div ng-view></div>
+	<div class="footer">
+		<div class="container" >
+			<div class="row">
+				<div class="col-9"></div>
+				<div class="col-1"><i class="fab fa-linkedin"></i></div>
+				<div class="col-1"><i class="fab fa-github"></i></div>
+				<div class="col-1"><i class="fas fa-envelope-square"></i></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
