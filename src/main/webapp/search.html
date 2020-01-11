@@ -6,7 +6,7 @@
 	    	<select ng-options="value for value in values" ng-model="selectedValue">
 	    	</select>
 	    	<button type="button" class="btn  btn-lg btn-success " ng-click="getStationsByValue(selectedValue)">
-				Go
+				Show me Stations!
 			</button>
 		</div>
 	</div>
@@ -14,17 +14,28 @@
 <div ng-hide="showsearch">
 	<div class="card" >
 		<div class="card-header">
-			<div class="row">
-			</div>
-			<div class="col-6">
-			</div>
-			<div class="row">
-				Filter by:		
-				<input type="text" ng-model="filtervalue">
+			<div class="container-fluid">
+					<div class="row">
+						<div class="col-1">
+							<button type="button" class="btn btn-success" ng-click="subscribeByEmail()">
+								<a href="#!subscribe" class="text-white">subscribe</a>
+							</button>
+						</div>
+						<div class="col-1">
+							<button type="button" class="btn btn-primary" ng-click="getStationsByAddress()">
+								<a href="#!station_tracker" class="text-white">Tracker</a>
+							</button>
+						</div>
+							<div class="col-10">
+								Filter by:		
+						<input type="text" ng-model="filtervalue">
+							</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="card-body">
-			<table class="table table-sortable">
+			<table class="table table-dark table-hover">
 				<thead class="text-primary">
 					<tr>
 						<td></td>
@@ -34,16 +45,6 @@
 					</tr>
 				</thead>
 				<tbody>
-					
-						<button type="button" class="btn btn-success" ng-click="subscribeByEmail()">
-							<a href="#!subscribe" class="text-white">subscribe</a>
-						</button>
-						
-							<button type="button" class="btn btn-primary" ng-click="getStationsByAddress()">
-								<a href="#!station_tracker" class="text-white">Station Tracker</a>
-							</button>
-						
-					
 					<tr ng-repeat="station in stations | filter : filtervalue">
 						<td>
 							<input type="radio" name="optradio" ng-model="selectedStation" ng-click="selectStation(station)">

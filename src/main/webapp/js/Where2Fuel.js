@@ -55,6 +55,8 @@ where2fuel.controller('where2fuelcontroller', function($scope, $http) {
 	 
 	$scope.selectedValue = "All";
 	$scope.stationForDetails = null;
+	$scope.searchClear = angular.copy($scope.default);
+	$scope.stations = null;
 	 
 	 
 	 $scope.getStationsByValue = function(value) {
@@ -90,15 +92,24 @@ where2fuel.controller('where2fuelcontroller', function($scope, $http) {
 	 }
 	 
 	 $scope.getStationsByAddress = function() {
-		 console.log($scope.stationForDetails)
+		 $scope.showsearch = true;
+		 $scope.stations = $scope.searchClear;
 		 $http.get("/Where2Fuel/rest/v1/station/address" + "/" + $scope.stationForDetails.address)
 		 .then(function(response) {
 			 $scope.station = response.data;
-			 console.log($scope.station)
-			 $scope.chartlabels = [$scope.station[0].updateDate, $scope.station[1].updateDate, $scope.station[2].updateDate, $scope.station[3].updateDate, $scope.station[4].updateDate, $scope.station[5].updateDate, $scope.station[6].updateDate];
-				$scope.chartdata = [
-					[$scope.station[0].price, $scope.station[1].price, $scope.station[2].price, $scope.station[3].price, $scope.station[4].price, $scope.station[5].price, $scope.station[6].price]
-				]
+			 $scope.stationSize = $scope.station.length;
+			 $scope.series = [$scope.station[0].name];
+			 $scope.chartlabels = [$scope.station[$scope.stationSize - 1].updateDate, $scope.station[$scope.stationSize - 2].updateDate, $scope.station[$scope.stationSize - 3].updateDate, $scope.station[$scope.stationSize - 4].updateDate, $scope.station[$scope.stationSize - 5].updateDate, $scope.station[$scope.stationSize - 6].updateDate, $scope.station[$scope.stationSize - 7].updateDate];
+			 $scope.chartdata = [
+							[$scope.station[$scope.stationSize - 1].price, $scope.station[$scope.stationSize - 2].price, $scope.station[$scope.stationSize - 3].price, $scope.station[$scope.stationSize - 4].price, $scope.station[$scope.stationSize - 5].price, $scope.station[$scope.stationSize - 6].price, $scope.station[$scope.stationSize - 7].price]
+						]
+				
+				  
+			  
+			 
+			
+			  
+			
 				
 		 }, function(response) {
 			 console.log('Error get stationsbyaddress: ' + response.status)
